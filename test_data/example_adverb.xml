@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyses>
+	<analysis><form lang="la">libere</form><lemma>liber</lemma><expandedForm>libere</expandedForm><pos>adv</pos><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>liber</lemma><expandedForm>libere</expandedForm><pos>adj</pos><number>sg</number><gender>neut</gender><case>voc</case><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>liber</lemma><expandedForm>libere</expandedForm><pos>adj</pos><number>sg</number><gender>masc</gender><case>voc</case><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>libet</lemma><expandedForm>libere</expandedForm><pos>verb</pos><tense>pres</tense><mood>inf</mood><voice>act</voice><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>libet</lemma><expandedForm>libere</expandedForm><pos>verb</pos><person>2nd</person><number>sg</number><tense>pres</tense><mood>ind</mood><voice>pass</voice><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>libet</lemma><expandedForm>libere</expandedForm><pos>verb</pos><person>2nd</person><number>sg</number><tense>pres</tense><mood>imperat</mood><voice>pass</voice><dialect/><feature/></analysis>
+	<analysis><form lang="la">libere</form><lemma>libo</lemma><expandedForm>libere</expandedForm><pos>verb</pos><person>2nd</person><number>sg</number><tense>pres</tense><mood>subj</mood><voice>pass</voice><dialect/><feature/></analysis>
+</analyses>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<analyses>
+	<analysis>
+		<form lang="la">terra</form>
+		<lemma>terra</lemma>
+		<expandedForm>terra</expandedForm>
+		<pos>noun</pos>
+		<number>sg</number>
+		<gender>fem</gender>
+		<case>voc</case>
+		<dialect></dialect>
+		<feature></feature>
+	</analysis>
+	<analysis>
+		<form lang="la">terra</form>
+		<lemma>terra</lemma>
+		<expandedForm>terra</expandedForm>
+		<pos>noun</pos>
+		<number>sg</number>
+		<gender>fem</gender>
+		<case>nom</case>
+		<dialect></dialect>
+		<feature></feature>
+	</analysis>
+	<analysis>
+		<form lang="la">terra</form>
+		<lemma>terra</lemma>
+		<expandedForm>terra</expandedForm>
+		<pos>noun</pos>
+		<number>sg</number>
+		<gender>fem</gender>
+		<case>abl</case>
+		<dialect></dialect>
+		<feature></feature>
+	</analysis>
+</analyses>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analyses>
+	<analysis><form lang="la">ejus</form><lemma>is</lemma><expandedForm>ejus</expandedForm><pos>pron</pos><number>sg</number><gender>neut</gender><case>gen</case><dialect/><feature>indeclform</feature></analysis>
+	<analysis><form lang="la">ejus</form><lemma>is</lemma><expandedForm>ejus</expandedForm><pos>pron</pos><number>sg</number><gender>masc</gender><case>gen</case><dialect/><feature>indeclform</feature></analysis>
+	<analysis><form lang="la">ejus</form><lemma>is</lemma><expandedForm>ejus</expandedForm><pos>pron</pos><number>sg</number><gender>fem</gender><case>gen</case><dialect/><feature>indeclform</feature></analysis>
+</analyses>
