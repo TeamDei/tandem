@@ -1,7 +1,8 @@
 # tandem
 tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin reader** to aid in the translation/reading of Latin.
 
-## INSERT SCREENSHOT HERE
+<img src="https://github.com/TeamDei/tandem/raw/main/screenshots/1.png">
+<img src="https://github.com/TeamDei/tandem/raw/main/screenshots/2.png">
 
 ## (!) Notice
  - **tandem is currently in a beta state and usable. We plan to release a stable v1.0.0 by Christmas. Stay tuned.**
