@@ -21,13 +21,13 @@ go install github.com/teamdei/tandem
 ## Usage
 tandem is a command-line application. This guide assumes general familiarity with command-line applications.
 
-## Mac/Linux
+#### Mac/Linux
 Open up Terminal in the folder where tandem was downloaded to and type in `./tandem -file "path/to/file.txt"` to open up the interactive reader on the specified file.
 
-## Windows
+#### Windows
 Using command prompt, type in `tandem.exe -file "path\to\file.txt"` to open up the interactive reader on the specified file.
 
-#### Navigation
+## Navigation
 tandem recognizes various keybinds which enable quick and easy navigation.
 
  - **h, left arrow:** Move left one word.
@@ -38,6 +38,8 @@ tandem recognizes various keybinds which enable quick and easy navigation.
  - **G, end:** Move to the bottom.
  - **Ctrl-F, page down:** Move down by one page.
  - **Ctrl-B, page up:** Move up by one page.
+ - **ENTER:** Get analyses on a Latin word.
+ - **ESC:** Exit tandem.
 
 #### Tuft University / Perseus API Integration
 The API integration allows tandem to instantly get scholarly analyses of a Latin word and display it to you in-editor. For example, looking up the word `terra` yields the following analyses:
