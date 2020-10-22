@@ -12,7 +12,7 @@ tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin r
  - Integrates with Tuft University's Perseus API to provide instant analyses of Latin words
 
 ## Installation
-Head over to our [Releases page]() and download a fresh release for Windows, Mac or Linux. If you prefer, and have Go installed, simply run:
+Head over to our [Releases page](https://github.com/TeamDei/tandem/releases) and download a fresh release for Windows, Mac or Linux. If you prefer, and have Go installed, simply run:
 
 ```
 go install github.com/teamdei/tandem
