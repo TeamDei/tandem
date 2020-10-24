@@ -1,4 +1,7 @@
 # tandem
+
+![](https://img.shields.io/github/downloads/teamdei/tandem/latest/total) ![](https://img.shields.io/github/issues/teamdei/tandem) 
+
 tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin reader** to aid in the translation/reading of Latin.
 
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/1.png">
