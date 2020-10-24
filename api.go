@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"strings"
 )
 
 const (
@@ -66,6 +67,7 @@ func (a *Analysis) String() string {
 
 // Generate response from the API
 func GenAPI(word string) (Response, error) {
+	word = strings.ReplaceAll(strings.ReplaceAll(word, "\r", ""), "\n", "")
 	r, err := http.Get(API_Base+word)
 	if err != nil {
 		return Response{}, err
