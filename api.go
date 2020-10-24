@@ -67,20 +67,20 @@ func (a *Analysis) String() string {
 // Generate response from the API
 func GenAPI(word string) (Response, error) {
 	r, err := http.Get(API_Base+word)
-	defer r.Body.Close()
 	if err != nil {
 		return Response{}, err
 	}
+	defer r.Body.Close()
 	return generateResponse(r.Body)
 }
 
 // Generate response from a file
 func GenFile(path string) (Response, error) {
 	f, err := os.Open(path)
-	defer f.Close()
 	if err != nil {
 		return Response{}, err
 	}
+	defer f.Close()
 	return generateResponse(f)
 }
 
