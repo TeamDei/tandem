@@ -1,6 +1,6 @@
 # tandem
 
-![](https://img.shields.io/github/downloads/teamdei/tandem/latest/total) ![](https://img.shields.io/github/issues/teamdei/tandem) 
+![](https://img.shields.io/github/downloads/teamdei/tandem/latest/total) ![](https://img.shields.io/github/issues/teamdei/tandem) ![](https://api.travis-ci.com/TeamDei/tandem.svg?branch=main)
 
 tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin reader** to aid in the translation/reading of Latin.
 
