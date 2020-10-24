@@ -67,7 +67,7 @@ func (a *Analysis) String() string {
 
 // Generate response from the API
 func GenAPI(word string) (Response, error) {
-	word = strings.ReplaceAll(strings.ReplaceAll(word, "\r", ""), "\n", "")
+	word = strings.Replace(strings.Replace(word, "\r", "", -1), "\n", "", -1)
 	r, err := http.Get(API_Base+word)
 	if err != nil {
 		return Response{}, err
