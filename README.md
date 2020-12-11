@@ -7,9 +7,6 @@ tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin r
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/1.png">
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/2.png">
 
-## (!) Notice
- - **tandem is currently in a beta state and usable. We plan to release a stable v1.0.0 by Christmas. Stay tuned.**
-
 ## Features
  - Blazing fast, 100% cross-platform (Mac, Windows, Linux) and lightweight terminal application
  - Integrates with Tuft University's Perseus API to provide instant analyses of Latin words
