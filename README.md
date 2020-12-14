@@ -81,3 +81,6 @@ Following is a test which showcases the full range of the API's features:
 
 ## Contributing
 Contributions are welcomed. Make sure to format your code with `gofmt` before making a pull request.
+
+## License
+This software is licensed under the GNU General Public License v3.0. See `LICENSE` for more information.
