@@ -39,6 +39,8 @@ func main() {
 
 	// Replace line endings with spaces
 	d = strings.Replace(strings.Replace(d, "\r", "", -1), "\n", " ", -1)
+	// Trim trailing spaces
+	d = strings.TrimSpace(d)
 	// Populate table with data from the selected file
 	data := strings.Split(tview.Escape(d), " ")
 	r, c := 0, 0
