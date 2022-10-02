@@ -12,8 +12,8 @@ import (
 )
 
 var (
-	COLUMNS int // Columns
-	FILE string // Path to file to open
+	COLUMNS int    // Columns
+	FILE    string // Path to file to open
 )
 
 func init() {
@@ -31,6 +31,11 @@ func main() {
 	// Create a pages object
 	pages := tview.NewPages()
 
+	if FILE == "" {
+		fmt.Println("error, file to open must be specified using --file")
+		return
+	}
+
 	// Load data from a file
 	d, err := LoadFile(FILE)
 	if err != nil {
@@ -44,7 +49,7 @@ func main() {
 	// Populate table with data from the selected file
 	data := strings.Split(tview.Escape(d), " ")
 	r, c := 0, 0
-	for i := 0; i<len(data); i++ {
+	for i := 0; i < len(data); i++ {
 		if c == 0 {
 			table.SetCell(r, 0, tview.NewTableCell(fmt.Sprintf("%d", r+1)).SetTextColor(tcell.ColorYellow).SetAlign(tview.AlignCenter))
 			table.SetCell(r, 1, tview.NewTableCell(data[i]).SetTextColor(tcell.ColorWhite).SetAlign(tview.AlignCenter))
@@ -53,8 +58,11 @@ func main() {
 			table.SetCell(r, c+1,
 				tview.NewTableCell(data[i]).SetTextColor(tcell.ColorWhite).SetAlign(tview.AlignCenter))
 			if c == COLUMNS {
-				c = 0; r++
-			} else { c++ }
+				c = 0
+				r++
+			} else {
+				c++
+			}
 		}
 	}
 

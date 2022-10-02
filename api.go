@@ -15,6 +15,28 @@ const (
 	API_Base = "http://www.perseus.tufts.edu/hopper/xmlmorph?lang=la&lookup="
 )
 
+// Redact certain characters.
+var REPLACER = strings.NewReplacer(
+	"\r", "",
+	"\n", "",
+	".", "",
+	",", "",
+	";", "",
+	"!", "",
+	"@", "",
+	"#", "",
+	"$", "",
+	"%", "",
+	"^", "",
+	"&", "",
+	"*", "",
+	"(", "",
+	")", "",
+	"-", "",
+	"_", "",
+	"+", "",
+)
+
 // Response stores analyses on a Latin word
 type Response struct {
 	Analyses []Analysis `xml:"analysis"`
@@ -22,19 +44,19 @@ type Response struct {
 
 // Analysis stores an interpretation of a Latin word
 type Analysis struct {
-	Form string `xml:"form"`
-	Lemma string `xml:"lemma"`
+	Form         string `xml:"form"`
+	Lemma        string `xml:"lemma"`
 	ExpandedForm string `xml:"expandedForm"`
-	Pos string `xml:"pos"`
-	Number string `xml:"number"`
-	Gender string `xml:"gender"`
-	Case string `xml:"case"`
-	Dialect string `xml:"dialect"`
-	Feature string `xml:"feature"`
-	Person string `xml:"person"`
-	Tense string `xml:"tense"`
-	Mood string `xml:"mood"`
-	Voice string `xml:"voice"`
+	Pos          string `xml:"pos"`
+	Number       string `xml:"number"`
+	Gender       string `xml:"gender"`
+	Case         string `xml:"case"`
+	Dialect      string `xml:"dialect"`
+	Feature      string `xml:"feature"`
+	Person       string `xml:"person"`
+	Tense        string `xml:"tense"`
+	Mood         string `xml:"mood"`
+	Voice        string `xml:"voice"`
 }
 
 // String returns a pretty-printed representation of an Analysis
@@ -44,17 +66,23 @@ func (a *Analysis) String() string {
 		fallthrough
 	case "pron":
 		fallthrough
+	case "conj":
+		fallthrough
+	case "prep":
+		fallthrough
 	case "adj":
 		if a.Feature != "" {
-			a.Feature = " ("+a.Feature+")"
+			a.Feature = " (" + a.Feature + ")"
 		}
 		return fmt.Sprintf("(%s)%s %s. %s. %s. of %s", a.Pos, a.Feature, a.Case, a.Gender, a.Number, a.Lemma)
+	case "part":
+		fallthrough
 	case "verb":
 		if a.Feature != "" {
-			a.Feature = "("+a.Feature+")"
+			a.Feature = "(" + a.Feature + ")"
 		}
 		if a.Person != "" {
-			a.Person = " "+a.Person+" person "
+			a.Person = " " + a.Person + " person "
 			a.Number += ","
 		}
 		return fmt.Sprintf("(%s)%s%s%s %s. %s. %s. of %s", a.Pos, a.Feature, a.Person, a.Number, a.Voice, a.Mood, a.Tense, a.Lemma)
@@ -67,8 +95,8 @@ func (a *Analysis) String() string {
 
 // Generate response from the API
 func GenAPI(word string) (Response, error) {
-	word = strings.Replace(strings.Replace(word, "\r", "", -1), "\n", "", -1)
-	r, err := http.Get(API_Base+word)
+	word = REPLACER.Replace(word)
+	r, err := http.Get(API_Base + word)
 	if err != nil {
 		return Response{}, err
 	}
@@ -102,9 +130,17 @@ func generateResponse(f io.Reader) (Response, error) {
 
 // Perform tests (optionally test the API too)
 func Tests(API bool) {
-	Test("noun");Test("pronoun");Test("verb");Test("adjective");Test("adverb")
+	Test("noun")
+	Test("pronoun")
+	Test("verb")
+	Test("adjective")
+	Test("adverb")
 	if API {
-		TestAPI("nautam");TestAPI("noster");TestAPI("hortari");TestAPI("acri");TestAPI("diligenter")
+		TestAPI("nautam")
+		TestAPI("noster")
+		TestAPI("hortari")
+		TestAPI("acri")
+		TestAPI("diligenter")
 	}
 	fmt.Println("")
 }
