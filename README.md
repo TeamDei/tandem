@@ -19,7 +19,7 @@ go install github.com/teamdei/tandem
 ```
 
 ## Usage
-tandem is a command-line application. It allows you to read Latin texts, naviate with keyboard shortcuts and the arrow keys, and look up a word's analyses by hitting the enter key. This guide assumes general familiarity with command-line applications.
+tandem is a command-line application. It allows you to read Latin texts. Navigate with the arrow keys, and look up a word's analyses by hitting the enter key. This guide assumes general familiarity with command-line applications.
 
 #### Mac/Linux
 Open up Terminal in the folder where tandem was downloaded to and type in `./tandem -file "path/to/file.txt"` to open up the interactive reader on the specified file.
@@ -50,7 +50,7 @@ The API integration allows tandem to instantly get scholarly analyses of a Latin
 (noun) abl. fem. sg. of terra
 ```
 
-Following is a test which showcases the full range of the API's features:
+Following are examples which showcase the full range of the API's features:
 
 ```
 ===noun test (terra)===
