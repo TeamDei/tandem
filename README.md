@@ -1,6 +1,6 @@
 # tandem
 
-![](https://api.travis-ci.com/TeamDei/tandem.svg?branch=main) ![](https://img.shields.io/github/issues/teamdei/tandem) ![](https://img.shields.io/github/downloads/teamdei/tandem/latest/total) ![https://www.codefactor.io/repository/github/teamdei/tandem](https://www.codefactor.io/repository/github/teamdei/tandem/badge)
+![](https://api.travis-ci.com/TeamDei/tandem.svg?branch=main) ![](https://img.shields.io/github/issues/teamdei/tandem) ![](https://img.shields.io/github/downloads/teamdei/tandem/latest/total)
 
 tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin reader** to aid in the translation/reading of Latin.
 
@@ -8,10 +8,12 @@ tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin r
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/2.png">
 
 ## Features
+
  - Blazing fast, 100% cross-platform (Mac, Windows, Linux) and lightweight terminal application
  - Integrates with Tuft University's Perseus API to provide instant analyses of Latin words
 
 ## Installation
+
 Head over to our [Releases page](https://github.com/TeamDei/tandem/releases) and download a fresh release for Windows, Mac or Linux. If you prefer, and have Go installed, simply run:
 
 ```
@@ -19,15 +21,19 @@ go install github.com/teamdei/tandem
 ```
 
 ## Usage
+
 tandem is a command-line application. It allows you to read Latin texts. Navigate with the arrow keys, and look up a word's analyses by hitting the enter key. This guide assumes general familiarity with command-line applications.
 
 #### Mac/Linux
+
 Open up Terminal in the folder where tandem was downloaded to and type in `./tandem -file "path/to/file.txt"` to open up the interactive reader on the specified file.
 
 #### Windows
+
 Using command prompt, type in `tandem.exe -file "path\to\file.txt"` to open up the interactive reader on the specified file.
 
 ## Navigation
+
 tandem recognizes various keybinds which enable quick and easy navigation.
 
  - **h, left arrow:** Move left one word.
@@ -42,6 +48,7 @@ tandem recognizes various keybinds which enable quick and easy navigation.
  - **ESC:** Exit tandem.
 
 #### Tuft University / Perseus API Integration
+
 The API integration allows tandem to instantly get scholarly analyses of a Latin word and display it to you in-editor. For example, looking up the word `terra` yields the following analyses:
 
 ```
@@ -80,7 +87,9 @@ Following are examples which showcase the full range of the API's features:
 ```
 
 ## Contributing
-Contributions are welcomed. Make sure to format your code with `gofmt` before making a pull request.
+
+Contributions are welcomed. Make sure to test, format and lint your code with `make test && make format && make lint` before making a pull request.
 
 ## License
+
 This software is licensed under the GNU General Public License v3.0. See `LICENSE` for more information.
