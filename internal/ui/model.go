@@ -1,8 +1,8 @@
 package ui
 
 import (
-	"github.com/servusdei2018/tandem/internal/latin"
-	"github.com/servusdei2018/tandem/internal/ui/layout"
+	"github.com/TeamDei/tandem/internal/latin"
+	"github.com/TeamDei/tandem/internal/ui/layout"
 
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"

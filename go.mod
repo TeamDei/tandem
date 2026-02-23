@@ -1,4 +1,4 @@
-module github.com/servusdei2018/tandem
+module github.com/TeamDei/tandem
 
 go 1.26
 

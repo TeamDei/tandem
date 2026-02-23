@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/servusdei2018/tandem/internal/ui"
+	"github.com/TeamDei/tandem/internal/ui"
 
 	tea "github.com/charmbracelet/bubbletea"
 )

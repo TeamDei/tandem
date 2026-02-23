@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/servusdei2018/tandem/internal/ui/layout"
-	"github.com/servusdei2018/tandem/internal/ui/styles"
+	"github.com/TeamDei/tandem/internal/ui/layout"
+	"github.com/TeamDei/tandem/internal/ui/styles"
 
 	"github.com/charmbracelet/lipgloss"
 )
