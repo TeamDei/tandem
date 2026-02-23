@@ -36,6 +36,8 @@ const (
 	StateReading AppState = iota
 	StateLoading
 	StateDetail
+	StateLoadingDef
+	StateDefinition
 	StateQuit
 )
 
@@ -53,6 +55,22 @@ func FetchWord(word string) tea.Cmd {
 	}
 }
 
+// DictResultMsg is the message delivered when the combined Perseus+Wiktionary call completes.
+type DictResultMsg struct {
+	BaseWord string // the lemma that was sent to Wiktionary
+	Defs     []latin.Definition
+	Err      error
+}
+
+// FetchDefinition returns a tea.Cmd that queries Wiktionary for English definitions of word.
+// If the word only contains inflected forms, Wiktionary automatically follows the link to the base lemma.
+func FetchDefinition(word string) tea.Cmd {
+	return func() tea.Msg {
+		base, defs, err := latin.LookupDefinitions(word)
+		return DictResultMsg{BaseWord: base, Defs: defs, Err: err}
+	}
+}
+
 // Model is the root bubbletea model for the tandem application.
 type Model struct {
 	words         []string
@@ -62,7 +80,9 @@ type Model struct {
 	state         AppState
 	spinner       spinner.Model
 	response      latin.Response
+	definitions   []latin.Definition
 	selectedWord  string
+	dictBaseWord  string // lemma sent to Wiktionary
 	err           error
 }
 
@@ -112,13 +132,18 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.state = StateDetail
 		return m, nil
 
+	case DictResultMsg:
+		m.definitions, m.dictBaseWord, m.err = msg.Defs, msg.BaseWord, msg.Err
+		m.state = StateDefinition
+		return m, nil
+
 	case tea.KeyMsg:
 		switch m.state {
 
 		case StateReading:
 			return m.updateReading(msg)
 
-		case StateDetail:
+		case StateDetail, StateDefinition:
 			switch msg.String() {
 			case "q", "esc":
 				m.state = StateReading
@@ -153,6 +178,14 @@ func (m Model) updateReading(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.selectedWord = m.words[m.cursor]
 		m.state = StateLoading
 		return m, tea.Batch(m.spinner.Tick, FetchWord(m.selectedWord))
+
+	case "tab":
+		if len(m.words) == 0 || m.words[m.cursor] == layout.Newline {
+			break
+		}
+		m.selectedWord = m.words[m.cursor]
+		m.state = StateLoadingDef
+		return m, tea.Batch(m.spinner.Tick, FetchDefinition(m.selectedWord))
 
 	case "left", "h":
 		if m.cursor > 0 {

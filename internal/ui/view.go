@@ -10,6 +10,9 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+// maxGlosses is the maximum number of glosses shown per part-of-speech group.
+const maxGlosses = 5
+
 // View dispatches to the correct view function for the current state.
 func (m Model) View() string {
 	if m.width == 0 {
@@ -18,10 +21,12 @@ func (m Model) View() string {
 	switch m.state {
 	case StateReading:
 		return m.viewReading()
-	case StateLoading:
+	case StateLoading, StateLoadingDef:
 		return m.viewLoading()
 	case StateDetail:
 		return m.viewDetail()
+	case StateDefinition:
+		return m.viewDefinition()
 	case StateQuit:
 		return m.viewQuit()
 	default:
@@ -72,7 +77,7 @@ func (m Model) viewReading() string {
 	}
 
 	body := lipgloss.NewStyle().Width(cw).Render(strings.Join(rows, "\n"))
-	status := styles.Status.Render("  ←/h · →/l · ↑/k · ↓/j · g/G · enter lookup · q quit")
+	status := styles.Status.Render("  ←/h · →/l · ↑/k · ↓/j · g/G · enter analyze · tab define · q quit")
 
 	return styles.Main.Width(layout.MainStyleWidth(m.width)).Render(
 		styles.Title.Render("tandem") + "\n" + body + "\n" + status,
@@ -106,6 +111,50 @@ func (m Model) viewDetail() string {
 				}
 			}
 			lines = append(lines, "  "+styles.Analysis.Render(s))
+		}
+	}
+
+	lines = append(lines, "", styles.Status.Render("  esc / q  ·  back to reader"))
+
+	panel := styles.Panel.Width(m.width / 2).Render(strings.Join(lines, "\n"))
+	return lipgloss.Place(m.width, m.height, lipgloss.Center, lipgloss.Center, panel)
+}
+
+func (m Model) viewDefinition() string {
+	title := m.dictBaseWord
+	if title == "" {
+		title = m.selectedWord
+	}
+	word := styles.PanelTitle.Render(title)
+
+	// If the inflected form differs from the lemma, show the source word.
+	subtitle := ""
+	if m.dictBaseWord != "" && m.dictBaseWord != m.selectedWord {
+		subtitle = "\n  " + styles.Dim.Render("← "+m.selectedWord)
+	}
+	sep := styles.Dim.Render(strings.Repeat("─", 44))
+
+	var lines []string
+	lines = append(lines, word+subtitle, sep)
+
+	switch {
+	case m.err != nil:
+		lines = append(lines, styles.Analysis.Render("  Error: "+m.err.Error()))
+	case len(m.definitions) == 0:
+		lines = append(lines, styles.Analysis.Render("  No definitions found."))
+	default:
+		for i, d := range m.definitions {
+			if i > 0 {
+				lines = append(lines, "") // blank line between POS groups
+			}
+			lines = append(lines, "  "+styles.POS.Render(d.PartOfSpeech))
+			limit := len(d.Glosses)
+			if limit > maxGlosses {
+				limit = maxGlosses
+			}
+			for j, g := range d.Glosses[:limit] {
+				lines = append(lines, fmt.Sprintf("  %s", styles.Analysis.Render(fmt.Sprintf("%d. %s", j+1, g))))
+			}
 		}
 	}
 

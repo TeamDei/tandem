@@ -6,11 +6,13 @@ tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin r
 
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/1.png">
 <img src="https://github.com/TeamDei/tandem/raw/main/screenshots/2.png">
+<img src="https://github.com/TeamDei/tandem/raw/main/screenshots/3.png">
 
 ## Features
 
  - Blazing fast, 100% cross-platform (Mac, Windows, Linux) and lightweight terminal application
- - Integrates with Tuft University's Perseus API to provide instant analyses of Latin words
+ - Integrates with Tuft University's Perseus API to provide instant morphological analyses of Latin words
+ - Integrates with the Wiktionary REST API to provide instant English dictionary definitions
 
 ## Installation
 
@@ -44,8 +46,9 @@ tandem recognizes various keybinds which enable quick and easy navigation.
  - **G, end:** Move to the bottom.
  - **Ctrl-F, page down:** Move down by one page.
  - **Ctrl-B, page up:** Move up by one page.
- - **ENTER:** Get analyses on a Latin word.
- - **ESC:** Exit tandem.
+ - **ENTER:** Get morphological analyses on a Latin word (via Perseus).
+ - **TAB:** Get English dictionary definitions for a Latin word (via Wiktionary).
+ - **ESC:** Exit tandem or close an open panel.
 
 #### Tuft University / Perseus API Integration
 
@@ -84,6 +87,18 @@ Following are examples which showcase the full range of the API's features:
 (verb) 2nd person sg, pass. ind. pres. of libet
 (verb) 2nd person sg, pass. imperat. pres. of libet
 (verb) 2nd person sg, pass. subj. pres. of libo
+```
+
+#### Wiktionary API Integration
+
+The dictionary integration allows tandem to fetch English definitions for a Latin word directly from Wiktionary. It acts natively — searching for conjugated verbs or declined nouns will automatically resolve to their base dictionary lemma. For example, hitting `Tab` on the word `principium` yields:
+
+```
+===Noun===
+1. a beginning, an origin, a commencement
+2. a groundwork, a foundation, a principle
+3. the elements, the first principles
+4. the front ranks, camp headquarters
 ```
 
 ## Contributing
