@@ -19,7 +19,7 @@ tandem (Latin for "at last") is a **fast, cross-platform and lightweight Latin r
 Head over to our [Releases page](https://github.com/TeamDei/tandem/releases) and download a fresh release for Windows, Mac or Linux. If you prefer, and have Go installed, simply run:
 
 ```
-go install github.com/teamdei/tandem
+go install github.com/teamdei/tandem@latest
 ```
 
 ## Usage
