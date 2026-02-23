@@ -4,7 +4,6 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
@@ -116,16 +115,15 @@ func GenFile(path string) (Response, error) {
 
 // Generate response
 func generateResponse(f io.Reader) (Response, error) {
-	body, err := ioutil.ReadAll(f)
+	body, err := io.ReadAll(f)
 	if err != nil {
 		return Response{}, err
 	}
 	var resp Response
 	if err = xml.Unmarshal(body, &resp); err != nil {
 		return Response{}, err
-	} else {
-		return resp, nil
 	}
+	return resp, nil
 }
 
 // Perform tests (optionally test the API too)

@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -43,7 +42,7 @@ func main() {
 	}
 
 	// Replace line endings with spaces
-	d = strings.Replace(strings.Replace(d, "\r", "", -1), "\n", " ", -1)
+	d = strings.NewReplacer("\r", "", "\n", " ").Replace(d)
 	// Trim trailing spaces
 	d = strings.TrimSpace(d)
 	// Populate table with data from the selected file
@@ -132,7 +131,7 @@ func Handle(e error) {
 
 // LoadFile returns a string containing the contents of the file
 func LoadFile(path string) (string, error) {
-	d, err := ioutil.ReadFile(path)
+	d, err := os.ReadFile(path)
 	if err != nil {
 		return "", err
 	}
